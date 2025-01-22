@@ -13,6 +13,11 @@ class Testimonials extends StatelessWidget {
       'position': 'Project Manager',
       'text': 'Working with Ruman was a great experience. Very professional and skilled.',
     },
+    {
+      'name': 'Jane Smith',
+      'position': 'Project Manager',
+      'text': 'Working with Ruman was a great experience. Very professional and skilled.',
+    },
   ];
 
   Testimonials({super.key});

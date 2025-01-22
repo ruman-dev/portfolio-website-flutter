@@ -28,10 +28,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  awesome_snackbar_content: ^0.1.5
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.17
+  fluttertoast: ^8.2.10
+  font_awesome_flutter: ^10.8.0
+  google_fonts: ^6.2.1
   url_launcher: ^6.3.1
 
 dev_dependencies:
@@ -61,10 +65,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Funnel Display
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-Regular.ttf
+        - asset: assets/fonts/FunnelDisplay-Medium.ttf
+        - asset: assets/fonts/FunnelDisplay-Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

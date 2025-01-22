@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/presentation/screens/home_screen.dart';
 
 class PortfolioApp extends StatelessWidget {
@@ -12,7 +13,6 @@ class PortfolioApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-
       ),
       home: const HomeScreen(),
     );
