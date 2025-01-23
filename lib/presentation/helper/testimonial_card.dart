@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TestimonialCard extends StatelessWidget {
   final String name;
@@ -17,7 +18,7 @@ class TestimonialCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Card(
-        color: Colors.grey[400],
+        color: Color.fromARGB(255, 31, 41, 55),
         margin: const EdgeInsets.symmetric(horizontal: 16),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -25,13 +26,14 @@ class TestimonialCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 40,
-                backgroundImage: const AssetImage('assets/images/ruman_picture.png'),
+                backgroundImage: const AssetImage('assets/images/avatar.jpg'),
               ),
               const SizedBox(height: 16),
               Text(
                 '"$text"',
-                style: const TextStyle(
-                  fontSize: 16,
+                style: GoogleFonts.montserrat(
+                  fontSize: 18,
+                  color: Colors.white,
                   fontStyle: FontStyle.italic,
                 ),
                 textAlign: TextAlign.center,
@@ -39,8 +41,9 @@ class TestimonialCard extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 name,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: GoogleFonts.aldrich(
+                  fontSize: 26,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -48,8 +51,8 @@ class TestimonialCard extends StatelessWidget {
               Text(
                 position,
                 style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
+                  fontSize: 16,
+                  color: Colors.grey[300],
                 ),
               ),
             ],

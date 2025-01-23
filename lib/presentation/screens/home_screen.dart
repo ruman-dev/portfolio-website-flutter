@@ -1,107 +1,109 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/presentation/helper/nav_bar_item.dart';
 import 'package:portfolio_website/presentation/widgets/about.dart';
 import 'package:portfolio_website/presentation/widgets/contact.dart';
 import 'package:portfolio_website/presentation/widgets/header.dart';
+import 'package:portfolio_website/presentation/widgets/methods/load_url.dart';
 import 'package:portfolio_website/presentation/widgets/projects.dart';
 import 'package:portfolio_website/presentation/widgets/skills.dart';
 import 'package:portfolio_website/presentation/widgets/testimonials.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../data/portfolio_data.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  // Create GlobalKeys for each section
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey skillsKey = GlobalKey();
+  final GlobalKey projectKey = GlobalKey();
+  final GlobalKey testimonialKey = GlobalKey();
+  final GlobalKey contactKey = GlobalKey();
+
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext!;
+    final position = context.findRenderObject() as RenderBox;
+
+    final offset = position.localToGlobal(Offset.zero).dy +
+        _scrollController.offset -
+        kToolbarHeight;
+
+    _scrollController.animateTo(
+      offset,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void downloadFile() {
+    // Download file
+    loadUrl(downloadLink);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // endDrawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: [
-      //       DrawerHeader(
-      //         decoration: BoxDecoration(
-      //           color: Colors.blue,
-      //         ),
-      //         child: const Text(
-      //           'Ruman',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //           ),
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: const Text('About'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //           // Add scroll to section functionality
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Skills'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Work'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Testimonials'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Contact'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       Padding(
-      //         padding: const EdgeInsets.all(16.0),
-      //         child: ElevatedButton(
-      //           onPressed: () {},
-      //           child: const Text('Download CV'),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      extendBodyBehindAppBar: true,
+      backgroundColor: Color.fromARGB(255, 3, 7, 18),
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
-          // Modified Navbar
           SliverAppBar(
             floating: true,
-            backgroundColor: Colors.white,
+            pinned: true,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
+                child: Container(
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
             elevation: 2,
             title: LayoutBuilder(
               builder: (context, constraints) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Logo text
-                    const Text(
-                      'Ruman',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Text(
+                      '<Dev R.>',
+                      style: GoogleFonts.aldrich(
+                          color: Colors.blue,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 6),
                     ),
                     // Navigation items
                     if (constraints.maxWidth > 600)
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          NavbarItem(title: 'About', onTap: () {}),
-                          NavbarItem(title: 'Skills', onTap: () {}),
-                          NavbarItem(title: 'Work', onTap: () {}),
-                          NavbarItem(title: 'Testimonials', onTap: () {}),
-                          NavbarItem(title: 'Contact', onTap: () {}),
+                          NavbarItem(
+                              title: 'About',
+                              onTap: () => _scrollToSection(aboutKey)),
+                          NavbarItem(
+                              title: 'Skills',
+                              onTap: () => _scrollToSection(skillsKey)),
+                          NavbarItem(
+                              title: 'Projects',
+                              onTap: () => _scrollToSection(projectKey)),
+                          NavbarItem(
+                              title: 'Testimonials',
+                              onTap: () => _scrollToSection(testimonialKey)),
+                          NavbarItem(
+                              title: 'Contact',
+                              onTap: () => _scrollToSection(contactKey)),
                           const SizedBox(width: 16),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -115,10 +117,13 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text(
+                            onPressed: () {
+                              downloadFile();
+                            },
+                            child: Text(
                               'Download CV',
-                              style: TextStyle(fontSize: 18),
+                              style: GoogleFonts.openSans(
+                                  fontSize: 18, color: Colors.grey[300]),
                             ),
                           ),
                         ],
@@ -136,19 +141,19 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          // Rest of the content remains the same
+          // Main content
           SliverToBoxAdapter(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Header(),
-                  About(),
-                  Skills(),
-                  Projects(),
-                  Testimonials(),
-                  Contact(),
-                ],
-              ),
+            child: Column(
+              children: [
+                const SizedBox(height: 70),
+                Header(),
+                const SizedBox(height: 70),
+                About(aboutKey: aboutKey),
+                Skills(skillsKey: skillsKey),
+                Projects(projectKey: projectKey),
+                Testimonials(testimonialKey: testimonialKey),
+                Contact(contactKey: contactKey),
+              ],
             ),
           ),
         ],

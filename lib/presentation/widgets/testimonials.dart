@@ -1,67 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_website/presentation/data/portfolio_data.dart';
 import 'package:portfolio_website/presentation/helper/testimonial_card.dart';
 
 class Testimonials extends StatelessWidget {
-  final List<Map<String, String>> testimonials = [
-    {
-      'name': 'John Doe',
-      'position': 'CEO, Tech Corp',
-      'text': 'Ruman is an exceptional developer who delivers high-quality work.',
-    },
-    {
-      'name': 'Jane Smith',
-      'position': 'Project Manager',
-      'text': 'Working with Ruman was a great experience. Very professional and skilled.',
-    },
-    {
-      'name': 'Jane Smith',
-      'position': 'Project Manager',
-      'text': 'Working with Ruman was a great experience. Very professional and skilled.',
-    },
-  ];
-
-  Testimonials({super.key});
+  const Testimonials({super.key, required this.testimonialKey});
+  final Key testimonialKey;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      key: testimonialKey,
+      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 40),
       child: Column(
         children: [
-          const Text(
+          Text(
             'Testimonials',
-            style: TextStyle(
+            style: GoogleFonts.lexend(
               fontSize: 30,
+              color: Colors.grey[300],
               fontWeight: FontWeight.bold,
+              letterSpacing: 2,
             ),
           ),
           const SizedBox(height: 20),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 800) {
-                return Row(
-                  children: testimonials
-                      .map((t) => Expanded(
-                            child: TestimonialCard(
-                              name: t['name']!,
-                              position: t['position']!,
-                              text: t['text']!,
-                            ),
-                          ))
-                      .toList(),
-                );
-              } else {
-                return Column(
-                  children: testimonials
-                      .map((t) => TestimonialCard(
-                            name: t['name']!,
-                            position: t['position']!,
-                            text: t['text']!,
-                          ))
-                      .toList(),
-                );
-              }
-            },
+          Row(
+            children: testimonialData
+                .map((t) => Expanded(
+                      child: TestimonialCard(
+                        name: t['name']!,
+                        position: t['position']!,
+                        text: t['text']!,
+                      ),
+                    ))
+                .toList(),
           ),
         ],
       ),

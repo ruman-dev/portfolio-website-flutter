@@ -1,82 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../data/portfolio_data.dart';
 
 class About extends StatelessWidget {
-  const About({super.key});
+  const About({super.key, required this.aboutKey});
+
+  final Key aboutKey;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth > 800) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 150,
-                    backgroundImage: AssetImage('assets/images/ruman_pic_2.png'),
-                  ),
-                  const SizedBox(width: 40),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'About Me',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'I am a skilled Flutter developer with experience in creating cross-platform applications. My passion lies in building beautiful, functional, and user-friendly applications that solve real-world problems.\n\n\n\n\n\n'
-                          'I am a skilled Flutter developer with experience in creating cross-platform applications. My passion lies in building beautiful, functional, and user-friendly applications that solve real-world problems.',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+      key: aboutKey,
+      color: Color.fromARGB(255, 17, 24, 39),
+      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                'assets/images/ruman_pic_2.png',
+                height: 300,
+                fit: BoxFit.fill,
               ),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 150,
-                    backgroundImage: AssetImage('assets/images/ruman_pic_2.png'),
+            ),
+          ),
+          const SizedBox(width: 80),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'About Me',
+                  style: GoogleFonts.lexend(
+                    fontSize: 30,
+                    color: Colors.grey[300],
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
                   ),
-                  const SizedBox(width: 40),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'About Me',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'I am a skilled Flutter developer with experience in creating cross-platform applications. My passion lies in building beautiful, functional, and user-friendly applications that solve real-world problems.\n\n\n\n\n\n'
-                          'I am a skilled Flutter developer with experience in creating cross-platform applications. My passion lies in building beautiful, functional, and user-friendly applications that solve real-world problems.',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
+                ),
+                SizedBox(height: 20),
+                Text(
+                  aboutDescText,
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
