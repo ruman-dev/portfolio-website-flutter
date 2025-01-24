@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../data/portfolio_data.dart';
+import 'package:portfolio_website/presentation/data/portfolio_data.dart';
 
 class About extends StatelessWidget {
   const About({super.key, required this.aboutKey});
@@ -13,21 +13,22 @@ class About extends StatelessWidget {
     return Container(
       key: aboutKey,
       color: Color.fromARGB(255, 17, 24, 39),
-      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 70.w, vertical: 20.h),
       child: Row(
         children: [
           Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
               child: Image.asset(
                 'assets/images/ruman_pic_2.png',
-                height: 300,
+                height: 300.h,
                 fit: BoxFit.fill,
               ),
             ),
           ),
-          const SizedBox(width: 80),
+          SizedBox(width: 80.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,16 +36,16 @@ class About extends StatelessWidget {
                 Text(
                   'About Me',
                   style: GoogleFonts.lexend(
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     color: Colors.grey[300],
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
+                    letterSpacing: 2.w,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Text(
                   aboutDescText,
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(fontSize: 16.sp, color: Colors.white),
                 ),
               ],
             ),

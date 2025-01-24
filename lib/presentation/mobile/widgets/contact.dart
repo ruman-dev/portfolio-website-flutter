@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/presentation/helper/contact_info.dart';
+import 'package:portfolio_website/presentation/mobile/helper/contact_info.dart';
+
+import '../../desktop/widgets/contact.dart';
 
 class Contact extends StatelessWidget {
   const Contact({super.key, required this.contactKey});
@@ -14,26 +16,27 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: contactKey,
-      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 40),
-      color: Color.fromARGB(255, 17, 24, 39),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      color: const Color.fromARGB(255, 17, 24, 39),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Get in Touch',
             style: GoogleFonts.lexend(
-              fontSize: 30,
+              fontSize: 50.sp,
               color: Colors.grey[300],
               fontWeight: FontWeight.bold,
-              letterSpacing: 2,
+              letterSpacing: 2.w,
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             'Need to talk to me? Feel free to discus with me',
-            style:
-                GoogleFonts.montserrat(fontSize: 16, color: Colors.grey[200]),
+            style: GoogleFonts.montserrat(
+                fontSize: 26.sp, color: Colors.grey[200]),
           ),
-          const SizedBox(height: 50),
+          SizedBox(height: 30.h),
           ContactInfo(
             icon: FontAwesomeIcons.envelope,
             text: 'ruman.cse49@gmail.com',
@@ -65,16 +68,4 @@ class Contact extends StatelessWidget {
       ),
     );
   }
-}
-
-void showToast(String title) {
-  Fluttertoast.showToast(
-      msg: title,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM_RIGHT,
-      timeInSecForIosWeb: 5,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      webBgColor: "linear-gradient(to right, #1488cc, #2b32b2)",
-      fontSize: 18.0);
 }

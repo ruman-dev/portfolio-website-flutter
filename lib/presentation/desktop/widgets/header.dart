@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/presentation/widgets/methods/load_url.dart';
+
+import '../../methods/load_url.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -9,7 +11,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 70.w, vertical: 20.h),
       color: Color.fromARGB(255, 3, 7, 18),
       child: Row(
         children: [
@@ -22,33 +24,33 @@ class Header extends StatelessWidget {
                     Text(
                       'Hi, I\'m ',
                       style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 50.sp,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Funnel Display',
                           color: Colors.white,
-                          letterSpacing: 5),
+                          letterSpacing: 5.w),
                     ),
                     Text(
                       'Ruman',
                       style: GoogleFonts.michroma(
-                          fontSize: 40,
+                          fontSize: 50.sp,
                           fontWeight: FontWeight.bold,
-                          letterSpacing: 5,
+                          letterSpacing: 5.w,
                           color: Colors.blue),
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   'Flutter Developer',
                   style: GoogleFonts.montserrat(
-                      fontSize: 22,
+                      fontSize: 30.sp,
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 10,
+                      letterSpacing: 10.w,
                       color: Colors.white,
-                      wordSpacing: 8),
+                      wordSpacing: 8.w),
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: 50.h),
                 Row(
                   children: [
                     InkWell(
@@ -58,10 +60,10 @@ class Header extends StatelessWidget {
                       child: FaIcon(
                         FontAwesomeIcons.linkedin,
                         color: Colors.grey[200],
-                        size: 40,
+                        size: 40.sp,
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    SizedBox(width: 20.w),
                     InkWell(
                       onTap: () {
                         loadUrl('https://github.com/ruman-dev');
@@ -69,10 +71,10 @@ class Header extends StatelessWidget {
                       child: FaIcon(
                         FontAwesomeIcons.squareGithub,
                         color: Colors.grey[200],
-                        size: 40,
+                        size: 40.sp,
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    SizedBox(width: 20.w),
                     InkWell(
                       onTap: () {
                         loadUrl('https://www.facebook.com/ruman.cse49');
@@ -80,7 +82,7 @@ class Header extends StatelessWidget {
                       child: FaIcon(
                         FontAwesomeIcons.squareFacebook,
                         color: Colors.grey[200],
-                        size: 40,
+                        size: 40.sp,
                       ),
                     ),
                   ],
@@ -89,8 +91,9 @@ class Header extends StatelessWidget {
             ),
           ),
           CircleAvatar(
-            radius: 150,
+            radius: 180.r,
             backgroundImage: AssetImage('assets/images/ruman_picture.png'),
+            backgroundColor: Colors.transparent,
           ),
         ],
       ),

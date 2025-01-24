@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SkillCard extends StatelessWidget {
@@ -9,7 +10,7 @@ class SkillCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
       decoration: BoxDecoration(
         color: Colors.blue[100],
         borderRadius: BorderRadius.circular(10),
@@ -19,8 +20,8 @@ class SkillCard extends StatelessWidget {
         children: [
           SvgPicture.network(
             skill,
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HeaderIcon extends StatelessWidget {
@@ -10,9 +11,8 @@ class HeaderIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(12),
         shape: BoxShape.rectangle,
       ),
       child: IconButton(
@@ -21,7 +21,7 @@ class HeaderIcon extends StatelessWidget {
         icon: FaIcon(
           icon,
           color: Colors.white,
-          size: 35,
+          size: 35.sp,
         ),
       ),
     );

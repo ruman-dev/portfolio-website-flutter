@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/presentation/widgets/methods/load_url.dart';
+
+import '../../methods/load_url.dart';
 
 class ProjectCard extends StatelessWidget {
   final String title;
@@ -22,74 +24,74 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Color.fromARGB(255, 31, 41, 55),
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
       child: Row(
         children: [
           Expanded(
             flex: 1,
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomLeft: Radius.circular(12)),
-                  color: Color.fromARGB(255, 55, 65, 81)),
+                borderRadius: BorderRadius.circular(12.r),
+                color: Color.fromARGB(255, 55, 65, 81),
+              ),
               child: Center(
-                child: Image.asset(imageUrl, height: 300),
+                child: Image.asset(imageUrl, height: 250.h),
               ),
             ),
           ),
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
                     style: GoogleFonts.montserrat(
-                      fontSize: 20,
+                      fontSize: 30.sp,
                       color: Colors.grey[200],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   Text(
                     description,
-                    style: TextStyle(fontSize: 16, color: Colors.grey[100]),
+                    style: TextStyle(fontSize: 22.sp, color: Colors.grey[100]),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
+                    spacing: 8.w,
+                    runSpacing: 8.h,
                     children: components.map((component) {
                       return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.w,
+                          vertical: 6.h,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(20),
+                          color: Color.fromARGB(255, 55, 65, 81),
+                          borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Text(
                           component,
                           style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black87,
+                            fontSize: 24.sp,
+                            color: Colors.grey[200],
                           ),
                         ),
                       );
                     }).toList(),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   InkWell(
                     onTap: () {
                       loadUrl(projectUrl);
                     },
-                    child: const Icon(
+                    child: Icon(
                       Icons.open_in_new,
                       color: Colors.white,
+                      size: 24.sp,
                     ),
                   ),
                 ],

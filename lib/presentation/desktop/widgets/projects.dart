@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/presentation/data/portfolio_data.dart';
-import 'package:portfolio_website/presentation/helper/project_card.dart';
+
+import '../helper/project_card.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key, required this.projectKey});
@@ -11,21 +13,21 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: projectKey,
-      padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 120.h, vertical: 20.h),
       color: Color.fromARGB(255, 17, 24, 39),
       child: Column(
         children: [
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           Text(
             'Projects',
             style: GoogleFonts.lexend(
-              fontSize: 30,
+              fontSize: 30.sp,
               color: Colors.grey[300],
               fontWeight: FontWeight.bold,
-              letterSpacing: 2,
+              letterSpacing: 2.w,
             ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
