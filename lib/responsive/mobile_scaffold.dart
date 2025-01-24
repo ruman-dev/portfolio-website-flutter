@@ -42,10 +42,6 @@ class _MobileScaffoldState extends State<MobileScaffold> {
     Navigator.of(context).pop(); // Close the drawer
   }
 
-  void downloadCV() {
-    loadUrl(downloadLink);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
