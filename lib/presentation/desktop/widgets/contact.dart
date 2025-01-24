@@ -34,7 +34,7 @@ class Contact extends StatelessWidget {
             style: GoogleFonts.montserrat(
                 fontSize: 16.sp, color: Colors.grey[200]),
           ),
-          // SizedBox(height: 50.h),
+          SizedBox(height: 50.h),
           ContactInfo(
             icon: FontAwesomeIcons.envelope,
             text: 'ruman.cse49@gmail.com',
@@ -44,6 +44,7 @@ class Contact extends StatelessWidget {
               showToast("Email Copied to Clipboard");
             },
           ),
+          SizedBox(height: 5.h),
           ContactInfo(
             icon: FontAwesomeIcons.phone,
             text: '+8801994385596',
@@ -53,6 +54,7 @@ class Contact extends StatelessWidget {
               showToast("Phone Copied to Clipboard");
             },
           ),
+          SizedBox(height: 5.h),
           ContactInfo(
             icon: Icons.location_on_outlined,
             text: 'Dhaka, Bangladesh',

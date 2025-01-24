@@ -14,7 +14,6 @@ class Testimonials extends StatelessWidget {
     return Container(
       key: testimonialKey,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      color: const Color.fromARGB(255, 17, 24, 39),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

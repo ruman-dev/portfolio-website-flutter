@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      color: const Color.fromARGB(255, 3, 7, 18),
+      color: const Color.fromARGB(255, 29, 35, 53),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

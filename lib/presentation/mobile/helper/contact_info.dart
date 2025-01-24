@@ -26,7 +26,7 @@ class ContactInfo extends StatelessWidget {
           text,
           textAlign: TextAlign.start,
           style: GoogleFonts.montserrat(
-            fontSize: 36.sp,
+            fontSize: 30.sp,
             color: Colors.grey[100],
             fontWeight: FontWeight.w600,
           ),

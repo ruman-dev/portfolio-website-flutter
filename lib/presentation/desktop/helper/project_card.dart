@@ -30,6 +30,7 @@ class ProjectCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 color: Color.fromARGB(255, 55, 65, 81),
@@ -59,7 +60,7 @@ class ProjectCard extends StatelessWidget {
                     description,
                     style: TextStyle(fontSize: 16.sp, color: Colors.grey[100]),
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 25.h),
                   Wrap(
                     spacing: 8.w,
                     runSpacing: 8.h,
@@ -83,7 +84,7 @@ class ProjectCard extends StatelessWidget {
                       );
                     }).toList(),
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 25.h),
                   InkWell(
                     onTap: () {
                       loadUrl(projectUrl);

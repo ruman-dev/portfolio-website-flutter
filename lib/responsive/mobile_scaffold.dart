@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_website/presentation/data/portfolio_data.dart';
+import 'package:portfolio_website/presentation/methods/load_url.dart';
 import 'package:portfolio_website/presentation/mobile/widgets/about.dart';
 import 'package:portfolio_website/presentation/mobile/widgets/contact.dart';
 import 'package:portfolio_website/presentation/mobile/widgets/header.dart';
@@ -38,6 +40,10 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       curve: Curves.easeInOut,
     );
     Navigator.of(context).pop(); // Close the drawer
+  }
+
+  void downloadCV() {
+    loadUrl(downloadLink);
   }
 
   @override
@@ -188,6 +194,19 @@ class _MobileScaffoldState extends State<MobileScaffold> {
                     fontSize: 40.sp, color: Colors.grey[200]),
               ),
               onTap: () => _scrollToSection(contactKey),
+            ),
+            ListTile(
+              tileColor: Colors.blue,
+              leading: Icon(
+                Icons.download_outlined,
+                color: Colors.grey[200],
+              ),
+              title: Text(
+                'Download CV',
+                style: GoogleFonts.openSans(
+                    fontSize: 40.sp, color: Colors.grey[200]),
+              ),
+              onTap: () => loadUrl(downloadLink),
             ),
           ],
         ),
